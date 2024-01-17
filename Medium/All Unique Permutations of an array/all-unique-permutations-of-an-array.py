@@ -1,0 +1,40 @@
+#User function Template for python3
+
+class Solution:
+    def uniquePerms(self, arr, n):
+        # code here
+        def backtrack(start):
+            if start == n:
+                result.append(arr[:])
+                return
+
+            seen = set()
+            for i in range(start, n):
+                if arr[i] not in seen:
+                    seen.add(arr[i])
+                    arr[start], arr[i] = arr[i], arr[start]
+                    backtrack(start + 1)
+                    arr[start], arr[i] = arr[i], arr[start]
+
+        result = []
+        backtrack(0)
+        result.sort()  # Sorting the result list to meet the requirement of sorted order
+        return result
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__': 
+    t = int (input ())
+    for _ in range (t):
+        n=int(input())
+        arr=list(map(int,input().split()))
+        
+        ob = Solution()
+        res = ob.uniquePerms(arr,n)
+        for i in range(len(res)):
+            for j in range(n):
+                print(res[i][j],end=" ")
+            print()
+# } Driver Code Ends
