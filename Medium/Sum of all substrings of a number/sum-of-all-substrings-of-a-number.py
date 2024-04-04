@@ -2,16 +2,17 @@
 MOD = 10**9+7
 
 class Solution:
+    #Function to find sum of all possible substrings of the given string.
     def sumSubstrings(self,s):
-        last=0
-        n=len(s)
-        mod=10**9+7
-        ab=0
-        for i in range(n):
-            val=int(s[i])
-            ab=((ab*10)+val*(i+1))%mod
-            last=(last+ab)%mod
-        return last 
+        # code here
+        res = 0
+        prev = 0
+        
+        for i in range(len(s)):
+            curr = int(s[i])
+            prev = ((prev*10)+curr*(i+1))%MOD
+            res = (res + prev)%MOD
+        return res
 
 
 #{ 
